@@ -1,0 +1,1544 @@
+{
+	"info": {
+		"_postman_id": "113f79fb-6eee-4486-bf18-c6d2bcdd8001",
+		"name": "Marvel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API tests group 1",
+			"item": [
+				{
+					"name": "API call with valid required  \"characters\" parameter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ec18fe40-f128-443b-a4a0-351f37c1590d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0efb1ea-2e3d-4132-a199-97b120914011",
+								"exec": [
+									"pm.test(\"Verify characters endpoint fetches lists of characters\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results.length).to.eql(20);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						},
+						"description": "Search for Thanos"
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"name\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c4029ad-800c-46b7-8dd4-126e1fde02ce",
+								"exec": [
+									"pm.test(\"Verify name query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Thanos\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&name=Thanos",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "name",
+									"value": "Thanos"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"nameStartsWith\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eac00b7d-6a7f-4136-800c-96f22b196d7f",
+								"exec": [
+									"pm.test(\"Verify nameStartsWith query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Thanos\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&nameStartsWith=Than",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "nameStartsWith",
+									"value": "Than"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"modifiedSince\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8694cc7-d1d2-4e36-ac75-bb4e9e9045f6",
+								"exec": [
+									"pm.test(\"Verify modifiedSince query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"3-D Man\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&modifiedSince=2014-04-29",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "modifiedSince",
+									"value": "2014-04-29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"comics\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ad7c98a-0886-4dec-8204-4cbce4e3708c",
+								"exec": [
+									"pm.test(\"Verify comics query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Thanos\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&comics=69671",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "comics",
+									"value": "69671"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"series\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "24405f82-2d0c-4e72-954d-8378d20d5116",
+								"exec": [
+									"pm.test(\"Verify series query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Avengers\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&series=26494",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "series",
+									"value": "26494"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"events\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2208a6f7-1d93-4589-9444-f55a0c95b5de",
+								"exec": [
+									"pm.test(\"Verify events query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Adam Warlock\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&events=29",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "events",
+									"value": "29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with valid \"stories\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e63c724a-5543-4233-b565-c1f370f70984",
+								"exec": [
+									"pm.test(\"Verify stories query parameter\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.results[0].name).to.eql(\"Galactus\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&stories=694",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "stories",
+									"value": "694"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "708b0da4-af16-4b84-a1af-5fcba9230980",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bdff772-97d9-47c7-a764-c53cf24468ef",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify status code is 200\", function () {  ",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API tests group 2",
+			"item": [
+				{
+					"name": "API call with invalid POST method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae3c1475-4ea9-491a-bb68-11df662ece96",
+								"exec": [
+									"pm.test(\"Verify message: POST is not allowed\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"POST is not allowed\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid PUT method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39c3d2c9-79e7-4a9f-966f-f2a4e76effa2",
+								"exec": [
+									"pm.test(\"Verify message: PUT is not allowed\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"PUT is not allowed\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid PATCH method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62e4c99c-bd4f-4b1c-b3bb-28d95ead852e",
+								"exec": [
+									"pm.test(\"Verify message: PATCH is not allowed\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"PATCH is not allowed\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid DELETE method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca0cab5b-ed55-44c6-98ff-5f00b5362013",
+								"exec": [
+									"pm.test(\"Verify message: DELETE is not allowed\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"DELETE is not allowed\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c4208236-38ad-41e7-b27f-370f6050b924",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a20babb-ccd1-4e9a-aacc-0edcf7c6d99b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});",
+							"",
+							"pm.test(\"Verify code: MethodNotAllowedError\", function () {",
+							"    pm.response.to.have.jsonBody(\"code\", \"MethodNotAllowedError\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API tests group 3",
+			"item": [
+				{
+					"name": "API call with invalid \"name\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8d088a9f-d4ae-4686-b5e0-64b3c4ef0571",
+								"exec": [
+									"pm.test(\"Verify invalid value for name query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"name cannot be blank if it is set\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&name=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "name",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"nameStartsWith\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "911ca520-02c1-4475-945c-01fda9988282",
+								"exec": [
+									"pm.test(\"Verify invalid value for nameStartsWith query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"nameStartsWith cannot be blank if it is set\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&nameStartsWith=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "nameStartsWith",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"modifiedSince\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81698e65-4cc7-483b-be80-304de16bcd12",
+								"exec": [
+									"pm.test(\"Verify invalid value for date query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"We don't recognize the parameter modifiedSinc\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&modifiedSinc=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "modifiedSinc",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"comics\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73e4e0b8-4309-40ba-9308-581f9046be34",
+								"exec": [
+									"pm.test(\"Verify invalid value for comics query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"You must pass at least one valid issue id if you set the issue filter.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&comics=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "comics",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"series\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "42b66f67-4f3b-43d8-8123-d99bd9b1f853",
+								"exec": [
+									"pm.test(\"Verify invalid value for series parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"You must pass at least one valid series if you set the series filter.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&series=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "series",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"events\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e235199-9fc9-4e09-9cba-b6d8fad83324",
+								"exec": [
+									"pm.test(\"Verify invalid value for events query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"You must pass at least one valid event id if you set the event filter.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&events=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "events",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid \"stories\" query parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb371a6e-7d07-4877-baac-587201eaec4b",
+								"exec": [
+									"pm.test(\"Verify invalid value for stories query parameter\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"You must pass at least one valid story id if you set the story filter.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash={{hash}}&stories=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								},
+								{
+									"key": "stories",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e60cd861-b9b5-44af-b431-2fdbde33ac34",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bfbaf3ac-8460-4031-ae2a-3ff3a63d7748",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API tests group 4",
+			"item": [
+				{
+					"name": "API call with missing API key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b777504b-7d9b-4536-b45e-8eeaa940f796",
+								"exec": [
+									"pm.test(\"Verify message: You must provide a user key\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"You must provide a user key.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with missing timestamp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68bf2514-b2ac-42fb-bd05-d9f54363734e",
+								"exec": [
+									"pm.test(\"Verify message: You must provide a timestamp\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"You must provide a timestamp.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with missing hash",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3bb6e31-a849-459a-8893-a2ca18a63d7f",
+								"exec": [
+									"pm.test(\"Verify message: You must provide a hash\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"You must provide a hash.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "33b7b444-3efe-4865-acca-03f53c5764c8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b799a5cf-613a-4ccf-b10f-d13b42cd8dea",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							"",
+							"pm.test(\"Verify code: MissingParameter\", function () {",
+							"    pm.response.to.have.jsonBody(\"code\", \"MissingParameter\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "API tests group 5",
+			"item": [
+				{
+					"name": "API call with invalid API key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f842add-848a-45ce-a276-6406e81c6295",
+								"exec": [
+									"pm.test(\"Verify message: The passed API key is invalid\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"The passed API key is invalid.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey=0&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "0"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid timestamp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa003f0c-1286-4c11-9d9c-36058ea4befd",
+								"exec": [
+									"pm.test(\"Verify message: That hash, timestamp and key combination is invalid\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"That hash, timestamp and key combination is invalid.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts=0&apikey={{apikey}}&hash={{hash}}",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "0"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "{{hash}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API call with invalid hash",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d68ad96-dd7b-4aff-88f7-a5732a2d94ab",
+								"exec": [
+									"pm.test(\"Verify message: That hash, timestamp and key combination is invalid\", function () { \r",
+									"    pm.response.to.have.jsonBody(\"message\", \"That hash, timestamp and key combination is invalid.\"); \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gateway.marvel.com/v1/public/characters?ts={{ts}}&apikey={{apikey}}&hash=0",
+							"protocol": "https",
+							"host": [
+								"gateway",
+								"marvel",
+								"com"
+							],
+							"path": [
+								"v1",
+								"public",
+								"characters"
+							],
+							"query": [
+								{
+									"key": "ts",
+									"value": "{{ts}}"
+								},
+								{
+									"key": "apikey",
+									"value": "{{apikey}}"
+								},
+								{
+									"key": "hash",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9063d521-3b13-48c1-9c76-0fbbad47fecf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c542cd-4072-419d-8367-8f75ab450e54",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Verify Status Code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Verify code: InvalidCredentials\", function () {",
+							"    pm.response.to.have.jsonBody(\"code\", \"InvalidCredentials\"); ",
+							"});"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "79cf3b1a-832f-4499-96e7-c160ba54c53e",
+				"type": "text/javascript",
+				"exec": [
+					"\tvar pubkey = \"e8c8c1c5ce107cb948d4a3dd75fac350\";",
+					"\tvar pvtkey = \"678d9b13379df86f07eb3a75338fcb112f2a52f2\";",
+					"    var ts = new Date().getTime();",
+					"    ",
+					"    pm.environment.set(\"ts\", ts);",
+					"\tpm.environment.set(\"apikey\", pubkey);",
+					"\tvar message = ts+pvtkey+pubkey;",
+					"\tvar a = CryptoJS.MD5(message);",
+					"\tpm.environment.set(\"hash\", a.toString());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "02ef4bb2-267d-4893-8144-37044ce46a37",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Verify response is a well-formed JSON object\", function () {",
+					"    var jsonData = pm.response.json();",
+					"    pm.expect(jsonData).to.be.an(\"object\");",
+					"});",
+					"",
+					"pm.test(\"Verify schema is valid\", function () {",
+					"    var schema = JSON.parse(environment.schema);",
+					"    pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+					"});",
+					"",
+					"pm.test(\"Verify Content-Type and Date headers are present\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"    pm.response.to.have.header(\"Date\");",
+					"});",
+					"",
+					"pm.test(\"Verify response time is less than 1000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});"
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
