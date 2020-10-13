@@ -1,5 +1,5 @@
 # Postman-Marvel-API-Automation-Tests
-Automation testing for the Marvel API using Postman and Newman.
+Automated testing for the Marvel API using Postman and Newman.
 
 Marvel API website: https://developer.marvel.com/docs \
 base url: https://gateway.marvel.com
