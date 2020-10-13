@@ -23,8 +23,7 @@ Open a terminal or command line and install Newman:
 ```
 npm install -g newman
 ```
-
-From a terminal or command line, navigate to your local project folder. Clone the following repository:
+Navigate to your local project folder. Clone the following repository:
 ```
 git clone https://github.com/JPLABRADOR/Postman-Marvel-API-Automation-Tests.git
 ```
